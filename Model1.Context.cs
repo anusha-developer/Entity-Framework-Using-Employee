@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entity.Models
+namespace Entitytwotable.Models
 {
     using System;
     using System.Data.Entity;
@@ -25,6 +25,7 @@ namespace Entity.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Employee1> Employee1 { get; set; }
+        public virtual DbSet<stud> studs { get; set; }
     }
 }

@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="skillicebergModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Employee">
+        <EntityType Name="Employee1">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -14,15 +14,27 @@
           <Property Name="Designation" Type="nvarchar" MaxLength="200" />
           <Property Name="Location" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="stud">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Fathername" Type="nvarchar(max)" />
+          <Property Name="Mothername" Type="nvarchar(max)" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="200" />
+          <Property Name="Location" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityContainer Name="skillicebergModelStoreContainer">
-          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee1" EntityType="Self.Employee1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stud" EntityType="Self.stud" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="skillicebergModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Employee">
+        <EntityType Name="Employee1">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -31,8 +43,20 @@
           <Property Name="Designation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="stud">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fathername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mothername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityContainer Name="skillicebergEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Employee1" EntityType="Self.Employee1" />
+          <EntitySet Name="studs" EntityType="Self.stud" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -40,11 +64,23 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="skillicebergModelStoreContainer" CdmEntityContainer="skillicebergEntities1">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="skillicebergModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
+          <EntitySetMapping Name="Employee1">
+            <EntityTypeMapping TypeName="skillicebergModel.Employee1">
+              <MappingFragment StoreEntitySet="Employee1">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studs">
+            <EntityTypeMapping TypeName="skillicebergModel.stud">
+              <MappingFragment StoreEntitySet="stud">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Fathername" ColumnName="Fathername" />
+                <ScalarProperty Name="Mothername" ColumnName="Mothername" />
                 <ScalarProperty Name="Designation" ColumnName="Designation" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
               </MappingFragment>
